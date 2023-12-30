@@ -5,12 +5,12 @@ import SpinningCircle from "@/app/components/Wheel";
 
 
 // Your page component
-const YourPageComponent = () => {
-    const contentString = "Your string content goes here";
+const TaskmasterPage = () => {
+    
     
   return (
     <div>
-      <h1>Your Page Title</h1>
+      <h1> </h1>
       <SpinningCircle />
       {/* Other content on your page */}
 
@@ -19,4 +19,4 @@ const YourPageComponent = () => {
   );
 };
 
-export default YourPageComponent;
+export default TaskmasterPage;
