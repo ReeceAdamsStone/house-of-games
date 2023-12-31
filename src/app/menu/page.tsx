@@ -33,9 +33,9 @@ const MenuPage: React.FC = () => {
         marginTop: '20px', // Add top margin
       }}>
         <RevealBox imageSrc="/AnswerSmash.PNG" altText="Answer Smash!" url='menu/answer-smash' />
-        <RevealBox imageSrc="/MrMrs.PNG" altText="Mr and Mrs!" url='menu/answer-smash'/>
+        <RevealBox imageSrc="/MrMrs.PNG" altText="Mr and Mrs!" url='menu/mrandmrs'/>
         <RevealBox imageSrc="/TaskMaster.PNG" altText="Taskmaster!" url='menu/taskmaster' />
-        <RevealBox imageSrc="/Quaver.PNG" altText="Music!" url='menu/answer-smash' />
+        
       </div>
     </div>
   );
