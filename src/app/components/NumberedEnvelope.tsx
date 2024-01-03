@@ -1,48 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 
-const NumberedEnvelope = ({ number, onClick }) => {
+interface NumberedEnvelopeProps {
+  number: number;
+  text?: string; // Make text optional
+  onClick: (envelopeNumber: number) => void;
+}
+
+const NumberedEnvelope: React.FC<NumberedEnvelopeProps> = ({ number, text, onClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleEnvelopeClick = () => {
-    setIsOpen(true); // Set the envelope to open when clicked
-    onClick(); // Invoke the onClick prop
-
-    // Optionally, you can reset the envelope to closed after a delay
+    setIsOpen(true);
+    onClick(number);
     setTimeout(() => {
       setIsOpen(false);
-    }, 1000); // Adjust the delay as needed
+    }, 1000);
   };
 
   return (
     <div
-      className="flex flex-col items-center gap-2"
+      className="flex flex-col items-center gap-2 relative"
       onClick={handleEnvelopeClick}
-      style={{ position: 'relative' }}
     >
-      <img
-        src="/envelope-svgrepo-com.svg"
-        alt="Closed Envelope Icon"
-        width="120"
-        height="120"
-        className="text-white"
-        style={{ visibility: isOpen ? 'hidden' : 'visible' }}
-      />
-      <img
-        src="/open-envelope-with-letter-svgrepo-com.svg"
-        alt="Open Envelope Icon"
-        width="120"
-        height="120"
-        className="text-white"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          visibility: isOpen ? 'visible' : 'hidden',
-          opacity: isOpen ? 1 : 0,
-          transition: 'opacity 0.5s ease',
-        }}
-      />
+      {isOpen ? (
+        <img
+          src="/open-envelope-with-letter-svgrepo-com.svg"
+          alt="Open Envelope Icon"
+          width="120"
+          height="120"
+          className="text-white transition-opacity duration-500"
+          style={{ opacity: isOpen ? 1 : 0 }}
+        />
+      ) : (
+        <img
+          src="/envelope-svgrepo-com.svg"
+          alt="Closed Envelope Icon"
+          width="120"
+          height="120"
+          className="text-white"
+        />
+      )}
       <span className="text-white">{number}</span>
+      {text && <p className="text-white">{text}</p>}
     </div>
   );
 };
