@@ -1,11 +1,8 @@
 // components/RootLayout.tsx
-
-
 import type { Metadata } from 'next';
-import './globals.css';
+import './globals.css'; // Import the global stylesheet
 import PageTransition from './components/PageTransition';
 import HamburgerMenu from './components/HamburgerMenu';
-
 
 export const metadata: Metadata = {
   title: '2024 House of Games',
@@ -20,9 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-                      {/* Navigation Menu */}
-      
-        <link rel="stylesheet" href="/C:/Users/Reece/Desktop/Code/fonts" />
+        {/* Navigation Menu */}
       </head>
       <body className="keepcalm-font">
         <HamburgerMenu />

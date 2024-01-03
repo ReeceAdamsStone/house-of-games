@@ -2,6 +2,7 @@
 "use client"
 
 import React from 'react';
+import Image from 'next/image';
 
 interface SquareDiamondProps {
   imageUrl: string;
@@ -23,13 +24,12 @@ const SquareDiamond: React.FC<SquareDiamondProps> = ({ imageUrl }) => {
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Add the shadow effect
       }}
     >
-      <img
+      <Image
         src={imageUrl}
         alt="Diamond Image"
+        layout="fill"
+        objectFit="cover" // Make the image cover the entire container
         style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover', // Make the image cover the entire container
           transform: 'rotate(-45deg)', // Counter-rotate the image
         }}
       />

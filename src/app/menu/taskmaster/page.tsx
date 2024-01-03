@@ -8,7 +8,7 @@ import NumberedEnvelope from '@/app/components/NumberedEnvelope';
 
 const TaskmasterPage = () => {
   const [isSpeechBubbleVisible, setSpeechBubbleVisible] = useState(false);
-  const [selectedEnvelope, setSelectedEnvelope] = useState<number | null>(null);
+  const [selectedEnvelope, setSelectedEnvelope] = useState<number>(1)
 
   const handleEnvelopeClick = (envelopeNumber: number) => {
     setSelectedEnvelope(envelopeNumber);
@@ -43,11 +43,11 @@ const TaskmasterPage = () => {
 
       {/* Numbered Envelopes arranged in banks of 4 */}
       <div className="grid grid-cols-4 gap-4">
-        {envelopesData.map(({ number, text }) => (
+        {envelopesData.map(({ number }) => (
           <NumberedEnvelope
             key={number}
             number={number}
-            text={text}
+            
             onClick={() => handleEnvelopeClick(number)}
           />
         ))}
@@ -56,13 +56,12 @@ const TaskmasterPage = () => {
       {/* SpeechBubble component */}
       {isSpeechBubbleVisible && (
         <SpeechBubble
-  isVisible={isSpeechBubbleVisible}
-  onClose={handleSpeechBubbleClose}
->
-  {/* Content for the speech bubble */}
-  <p>{`Task ${selectedEnvelope} chosen: ${envelopesData?.[selectedEnvelope - 1]?.text}`}</p>
-</SpeechBubble>
-
+          isVisible={isSpeechBubbleVisible}
+          onClose={handleSpeechBubbleClose}
+        >
+          {/* Content for the speech bubble */}
+          <p>{`Task ${selectedEnvelope} chosen: ${envelopesData[selectedEnvelope - 1].text}`}</p>
+        </SpeechBubble>
       )}
     </div>
   );

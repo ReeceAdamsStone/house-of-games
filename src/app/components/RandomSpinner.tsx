@@ -3,7 +3,7 @@ import anime from 'animejs';
 
 const SpinningWheel = () => {
   const wheelRef = useRef(null);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<number | null>(null);
 
   const spinWheel = () => {
     // Spin the wheel 5 times
@@ -19,8 +19,16 @@ const SpinningWheel = () => {
 
         // Set the final rotation to ensure the wheel ends in an upright position
         anime.set(wheelRef.current, { rotate: '+=270' });
+
+        // Call the resetRotation function after the spinning animation is complete
+        resetRotation();
       },
     });
+  };
+
+  const resetRotation = () => {
+    // Reset the rotation to its initial position
+    anime.set(wheelRef.current, { rotate: 0 });
   };
 
   return (
@@ -48,7 +56,6 @@ const SpinningWheel = () => {
             fontSize: '4.5rem',
             marginTop: '60px',
             color: 'white', // Set text color to white
-            
           }}
         >
          .

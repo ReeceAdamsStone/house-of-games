@@ -1,12 +1,12 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface NumberedEnvelopeProps {
   number: number;
-  text?: string; // Make text optional
   onClick: (envelopeNumber: number) => void;
 }
 
-const NumberedEnvelope: React.FC<NumberedEnvelopeProps> = ({ number, text, onClick }) => {
+const NumberedEnvelope: React.FC<NumberedEnvelopeProps> = ({ number, onClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleEnvelopeClick = () => {
@@ -23,25 +23,24 @@ const NumberedEnvelope: React.FC<NumberedEnvelopeProps> = ({ number, text, onCli
       onClick={handleEnvelopeClick}
     >
       {isOpen ? (
-        <img
+        <Image
           src="/open-envelope-with-letter-svgrepo-com.svg"
           alt="Open Envelope Icon"
-          width="120"
-          height="120"
+          width={120}
+          height={120}
           className="text-white transition-opacity duration-500"
           style={{ opacity: isOpen ? 1 : 0 }}
         />
       ) : (
-        <img
+        <Image
           src="/envelope-svgrepo-com.svg"
           alt="Closed Envelope Icon"
-          width="120"
-          height="120"
+          width={120}
+          height={120}
           className="text-white"
         />
       )}
       <span className="text-white">{number}</span>
-      {text && <p className="text-white">{text}</p>}
     </div>
   );
 };

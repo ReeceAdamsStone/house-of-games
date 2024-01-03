@@ -1,9 +1,16 @@
 // components/PageTransition.tsx
 "use client"
 
+
+// components/PageTransition.tsx
+import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
-const PageTransition: React.FC = ({ children }) => {
+interface PageTransitionProps {
+  children: ReactNode;
+}
+
+const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
   return (
     <motion.div
       key="pageTransition"

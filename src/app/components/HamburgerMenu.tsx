@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image'; // Import the Image component
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,10 +40,11 @@ const HamburgerMenu = () => {
           </svg>
         </button>
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
+          <Image
             src="https://static-00.iconduck.com/assets.00/party-popper-emoji-503x512-0vkq9zgo.png"
-            className="h-8"
             alt="Let's Party!"
+            width={48} // Adjust the width as needed
+            height={48} // Adjust the height as needed
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
             HOUSE of GAMES 2024
@@ -78,14 +80,13 @@ const HamburgerMenu = () => {
                   </a>
                 </li>
                 <li>
-                <a
-  href="https://buzzer.reeceadamsstone.co.uk"
-  className="block py-2 px-3 text-white"
-  aria-current="page"
->
-  Buzzer
-</a>
-
+                  <a
+                    href="https://buzzer.reeceadamsstone.co.uk"
+                    className="block py-2 px-3 text-white"
+                    aria-current="page"
+                  >
+                    Buzzer
+                  </a>
                 </li>
               </ul>
             </motion.div>

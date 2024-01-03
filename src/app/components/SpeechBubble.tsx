@@ -1,8 +1,13 @@
-// components/SpeechBubble.js
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
-const SpeechBubble = ({ isVisible, onClose, children }) => {
+interface SpeechBubbleProps {
+  isVisible: boolean;
+  onClose: () => void;
+  children: ReactNode;
+}
+
+const SpeechBubble: React.FC<SpeechBubbleProps> = ({ isVisible, onClose, children }) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}

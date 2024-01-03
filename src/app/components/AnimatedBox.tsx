@@ -1,9 +1,14 @@
 "use client"
-
+// Add this import statement at the top
 import React, { useState } from 'react';
 import anime from 'animejs';
 
-const AnimatedCard = ({ questions }) => {
+// Define the type for the questions prop
+interface AnimatedCardProps {
+  questions: string[];
+}
+
+const AnimatedCard: React.FC<AnimatedCardProps> = ({ questions }) => {
   const [selectedQuestion, setSelectedQuestion] = useState('');
 
   const animateCard = () => {
@@ -36,7 +41,6 @@ const AnimatedCard = ({ questions }) => {
         <h5 className="mb-4 block font-sans text-xl font-semibold leading-snug tracking-normal text-gray-400 antialiased">
           Mr and Mrs Question
         </h5>
-
       </div>
     </div>
   );
