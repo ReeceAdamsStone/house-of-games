@@ -8,12 +8,13 @@ import NumberedEnvelope from '@/app/components/NumberedEnvelope';
 
 const TaskmasterPage = () => {
   const [isSpeechBubbleVisible, setSpeechBubbleVisible] = useState(false);
-  const [selectedEnvelope, setSelectedEnvelope] = useState(null);
+  const [selectedEnvelope, setSelectedEnvelope] = useState<number | null>(null);
 
-  const handleEnvelopeClick = (envelopeNumber) => {
+  const handleEnvelopeClick = (envelopeNumber: number) => {
     setSelectedEnvelope(envelopeNumber);
     setSpeechBubbleVisible(true);
   };
+  
 
   const handleSpeechBubbleClose = () => {
     setSpeechBubbleVisible(false);
@@ -55,12 +56,13 @@ const TaskmasterPage = () => {
       {/* SpeechBubble component */}
       {isSpeechBubbleVisible && (
         <SpeechBubble
-          isVisible={isSpeechBubbleVisible}
-          onClose={handleSpeechBubbleClose}
-        >
-          {/* Content for the speech bubble */}
-          <p>{`Task ${selectedEnvelope} chosen: ${envelopesData[selectedEnvelope - 1].text}`}</p>
-        </SpeechBubble>
+  isVisible={isSpeechBubbleVisible}
+  onClose={handleSpeechBubbleClose}
+>
+  {/* Content for the speech bubble */}
+  <p>{`Task ${selectedEnvelope} chosen: ${envelopesData?.[selectedEnvelope - 1]?.text}`}</p>
+</SpeechBubble>
+
       )}
     </div>
   );
